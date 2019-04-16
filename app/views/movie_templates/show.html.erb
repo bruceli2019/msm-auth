@@ -6,6 +6,16 @@
   Edit movie
 </a>
 
+<!--we are using the post method, must specify that -->
+<form action = "/create_bookmark" method = "post">
+  <!--we add the hidden inputs here-->
+  <input type = "hidden" id = "movie_id" name = "movie_id" value = "<%= @movie.id %>">
+  <input type = "hidden" id = "user_id" name = "user_id" value = "<%= current_user.id %>">
+  <button class = "btn btn-block btn-outline-secondary">
+    Create Bookmark
+  </button>
+</form>
+
 <hr>
 
 <dl>

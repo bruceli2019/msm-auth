@@ -23,16 +23,25 @@
       Movie
     </label>
 
-    <input type="text" id="movie_id" name="movie_id" class="form-control" value="<%= @bookmark.movie_id %>">
+    <!--the code below is essentially a loop for the drop down menu -->
+    <%= select_tag(:movie_id, 
+      options_from_collection_for_select(
+        #the array of things we want options for
+        Movie.all, 
+        #the thing we want as the value of the <option>
+        :id,
+        #what do you want the user to see
+        :title,
+        #what value do you want to preselect, optional -- usually prepopulate with existing value if editing, i.e. @bookmark.movie_id
+        ),
+        #add HTML class attribute
+      :class => "form-control"
+      )
+    %>
   </div>
 
-  <div class="form-group">
-    <label for="user_id">
-      User
-    </label>
-
-    <input type="text" id="user_id" name="user_id" class="form-control" value="<%= @bookmark.user_id %>">
-  </div>
+  <!--automatically assigns the bookmark to the current logged in user, as provided by current_user under devise-->
+  <input type = "hidden" id = "user_id" name = "user_id" value = "<%= current_user.id %>">
 
   <button class="btn btn-block btn-outline-secondary">
     Create bookmark

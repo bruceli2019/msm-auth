@@ -10,4 +10,7 @@
 #
 
 class Bookmark < ApplicationRecord
+    #this alows us to call bookmarks
+    belongs_to :movie
+    belongs_to :user
 end

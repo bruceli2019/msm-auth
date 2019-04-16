@@ -1,6 +1,7 @@
 class BookmarksController < ApplicationController
   def index
-    @bookmarks = Bookmark.all
+    #only want to display the current user's bookmarks
+    @bookmarks = Bookmark.all.where(user_id: current_user.id)
 
     render("bookmark_templates/index.html.erb")
   end
